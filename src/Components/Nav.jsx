@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Nav = () => {
+  const  user  = useContext(AuthContext);
+  console.log(user);
   const [dropdown, setDropdown] = useState(false);
   //   const handleToggleDropdown = () => {};
 
