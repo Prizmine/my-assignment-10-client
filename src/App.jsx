@@ -1,11 +1,22 @@
 import { Outlet } from "react-router";
 import Footer from "./Components/Footer";
 import Nav from "./Components/Nav";
+import backgroundImage from "./assets/Images/top-view-green-bowl-with-colorful-cereals.jpg";
 
 function App() {
   return (
-    <>
-      <header>
+    <div
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+        height: "100%",
+      }}
+      
+    >
+      <header className="sticky top-0 z-10">
         <Nav></Nav>
       </header>
       <main className="min-h-screen">
@@ -14,7 +25,7 @@ function App() {
       <footer>
         <Footer></Footer>
       </footer>
-    </>
+    </div>
   );
 }
 
