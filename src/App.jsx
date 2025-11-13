@@ -25,7 +25,7 @@ function App() {
       <footer>
         <Footer></Footer>
       </footer>
-      <ToastContainer />
+      <ToastContainer autoClose={4000} />
     </div>
   );
 }

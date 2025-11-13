@@ -5,7 +5,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import React, { useContext, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { auth } from "../firebase/firebase.init";
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
@@ -13,8 +13,8 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+  // const location = useLocation();
+  // const from = location.state?.from?.pathname || "/";
 
   const { setUser } = useContext(AuthContext);
   const [error, setError] = useState("");
@@ -35,7 +35,7 @@ const Register = () => {
     }
 
     if (password !== conformPassword) {
-      setError("Password did not match");
+      toast.error("Password did not match");
       return;
     }
 
@@ -48,8 +48,15 @@ const Register = () => {
           photoURL: photo,
         })
           .then(() => {
-            setUser(auth.currentUser);
-            toast.success("created an user");
+            const updatedUser = {
+              ...auth.currentUser,
+              displayName: name,
+              photoURL: photo,
+            };
+
+            setUser(updatedUser);
+            // toast.success("created an user");
+            navigate("/");
           })
           .catch((e) => {
             toast.error(e.code);
@@ -64,7 +71,7 @@ const Register = () => {
     signInWithPopup(auth, googleProvider)
       .then((data) => {
         setUser(data.user);
-        navigate(from, { replace: true });
+        navigate("/");
       })
       .catch((e) => {
         toast.error(e.code);
@@ -78,7 +85,7 @@ const Register = () => {
     <div className="hero min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Register Now</h1>
+          <h1 className="text-5xl font-bold text-orange-600">Register Now</h1>
         </div>
         <div className="card bg-white/30 backdrop-blur-md w-full max-w-sm shrink-0 shadow-2xl rounded-2xl">
           <form onSubmit={handleFormSubmit} className="card-body">
@@ -159,7 +166,7 @@ const Register = () => {
                 </button>
               </div>
 
-              <button className="btn mt-6 w-full bg-gradient-to-r from-orange-400 to-red-500 text-white font-semibold py-3 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition-all duration-300">
+              <button className="btn mt-6 w-full bg-linear-to-r from-orange-400 to-red-500 text-white font-semibold py-3 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition-all duration-300">
                 Sign Up
               </button>
 

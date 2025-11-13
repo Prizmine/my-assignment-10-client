@@ -1,9 +1,13 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
 
 import { auth } from "../firebase/firebase.init";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { Link, useLocation, useNavigate } from "react-router";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
@@ -27,6 +31,17 @@ const Login = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((data) => {
+        setUser(data.user);
+        navigate(from, { replace: true });
+      })
+      .catch((e) => {
+        toast.error(e.code);
+      });
   };
 
   const [shwPassword, setShowPassword] = useState(false);
@@ -35,7 +50,7 @@ const Login = () => {
     <div className="hero min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Login now!</h1>
+          <h1 className="text-5xl font-bold text-orange-600">Login now!</h1>
         </div>
         <div className="card bg-white/30 backdrop-blur-md w-full max-w-sm shrink-0 shadow-2xl rounded-2xl">
           <form onSubmit={handleFormSubmit} className="card-body">
@@ -71,7 +86,7 @@ const Login = () => {
                 </button>
               </div>
 
-              <button className="btn mt-6 w-full bg-gradient-to-r from-orange-400 to-red-500 text-white font-semibold py-3 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition-all duration-300">
+              <button className="btn mt-6 w-full bg-linear-to-r from-orange-400 to-red-500 text-white font-semibold py-3 rounded-full shadow-md hover:scale-105 hover:shadow-lg transition-all duration-300">
                 Login
               </button>
 
@@ -127,7 +142,6 @@ const Login = () => {
           </form>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };

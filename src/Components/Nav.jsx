@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase/firebase.init";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 const Nav = () => {
   const { user } = useContext(AuthContext);
@@ -135,7 +135,6 @@ const Nav = () => {
           </div>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };
