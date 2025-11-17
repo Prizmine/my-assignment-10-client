@@ -8,6 +8,9 @@ import Home from "./Pages/Home.jsx";
 import AuthProvider from "./Provider/AuthProvider.jsx";
 import Login from "./Pages/Login.jsx";
 import Register from "./Pages/Register.jsx";
+import AllReviews from "./Pages/AllReviews.jsx";
+import PrivateRoute from "./Components/PrivetRout.jsx";
+import AddReview from "./Pages/AddReview.jsx";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +20,15 @@ const router = createBrowserRouter([
       { index: true, Component: Home },
       { path: "/login", Component: Login },
       { path: "/register", Component: Register },
+      { path: "all-reviews", Component: AllReviews },
+      {
+        path: "/add-review",
+        element: (
+          <PrivateRoute>
+            <AddReview></AddReview>
+          </PrivateRoute>
+        ),
+      },
     ],
   },
 ]);

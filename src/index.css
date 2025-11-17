@@ -38,9 +38,19 @@ html {
 }
 
 .appear {
-  animation: appear ease;
+  animation: appear ease-in-out;
   animation-timeline: view();
   animation-range: entry 0% cover 40%;
+}
+
+.appear-2 {
+  animation: appear ease-in-out;
+  animation-timeline: view();
+  animation-range: entry 0% cover 20%;
+}
+
+.slide-1{
+  animation: appear 0.8s ease-in-out;
 }
 
 @keyframes appear {
@@ -53,3 +63,4 @@ html {
     opacity: 1;
   }
 }
+

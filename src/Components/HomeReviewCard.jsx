@@ -62,15 +62,15 @@ const HomeReviewCard = ({ review }) => {
         <div className="card-body p-5">
           <h2 className="text-xl font-bold text-orange-600">{foodName}</h2>
 
-          <p className="text-gray-700 text-[15px]">
+          <p className="text-[15px]">
             <span className="font-semibold">Restaurant:</span> {restaurantName}
           </p>
 
-          <p className="text-gray-700 text-[15px]">
+          <p className="text-[15px]">
             <span className="font-semibold">Location:</span> {location}
           </p>
 
-          <p className="text-gray-700 text-[15px]">
+          <p className="text-[15px]">
             <span className="font-semibold">Reviewer:</span> {reviewerName}
           </p>
 

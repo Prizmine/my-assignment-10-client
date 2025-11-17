@@ -9,9 +9,10 @@ import logo from "/ChatGPT_Image_Nov_15__2025__08_19_28_PM-removebg-preview.png"
 const Nav = () => {
   const { user } = useContext(AuthContext);
 
-  console.log(user);
+  // console.log(user?.photoURL);
+  // photoURL
+
   const [dropdown, setDropdown] = useState(false);
-  //   const handleToggleDropdown = () => {};
 
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
@@ -49,26 +50,19 @@ const Nav = () => {
       });
   };
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-base-100/80 shadow-sm">
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            {/* <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              {" "}
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />{" "}
-            </svg> */}
-            <img src={logo} alt="" className="w-[55px] h-[55px]" />
+          <div
+            tabIndex={0}
+            role="button"
+            className="lg:hidden active:scale-[0.9]"
+          >
+            <img
+              src={logo}
+              alt=""
+              className="w-[55px] h-[55px] cursor-pointer bg-amber-50 rounded-full"
+            />
           </div>
           <ul
             tabIndex="-1"
@@ -81,7 +75,7 @@ const Nav = () => {
           <img
             src={logo}
             alt=""
-            className="w-[75px] h-[75px] hidden lg:block"
+            className="w-[75px] h-[75px] hidden lg:block bg-amber-50 rounded-full"
           />
         </a>
       </div>
@@ -93,18 +87,22 @@ const Nav = () => {
           <div className="flex gap-2 items-center">
             <p
               onClick={() => setDropdown(!dropdown)}
-              className="block lg:hidden text-right"
+              className="block lg:hidden text-right cursor-pointer"
             >
               {user.displayName}
             </p>
             <img
-              src={user.photoURL}
-              className="w-11 h-11 lg:w-14 lg:h-14 rounded-full"
+              src={
+                user.photoURL
+                  ? user.photoURL
+                  : "https://i.ibb.co/MBtjqXQ/default.png"
+              }
+              className="w-11 h-11 lg:w-14 lg:h-14 rounded-full cursor-pointer"
               onClick={() => setDropdown(!dropdown)}
             />
             <p
               onClick={() => setDropdown(!dropdown)}
-              className="hidden lg:block"
+              className="hidden lg:block cursor-pointer"
             >
               {user.displayName}
             </p>
@@ -129,7 +127,9 @@ const Nav = () => {
         >
           <p className="font-bold text-xl mb-2.5">You</p>
           <div className="flex flex-col mb-6 gap-4 ">
-            <Link className="btn bg-amber-500/80">Add Review</Link>
+            <Link to={"/add-review"} className="btn bg-amber-500/80">
+              Add Review
+            </Link>
             <Link className="btn bg-amber-500/80">My Reviews</Link>
             <button onClick={handleLogOut} className="btn bg-amber-500/80">
               Logout

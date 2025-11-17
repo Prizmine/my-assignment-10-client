@@ -80,7 +80,7 @@ const Login = () => {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!shwPassword)}
-                  className="btn btn-sm absolute right-5 top-[37%] z-10 bg-white/50 hover:bg-orange-100"
+                  className="btn btn-sm absolute text-black right-5 top-[37%] z-10 bg-white/50 hover:bg-orange-100"
                 >
                   {shwPassword ? <FaEyeSlash /> : <FaEye />}
                 </button>
