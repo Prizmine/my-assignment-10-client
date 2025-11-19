@@ -30,12 +30,11 @@ const HeroSection = () => {
   ];
 
   return (
-    <div className="relative w-full h-[90vh]">
+    <div className="relative w-full h-[90vh] slide-1 ">
       <Swiper
         modules={[Autoplay, Pagination, Navigation]}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
         pagination={{ clickable: true }}
-        // navigation={true}
         loop={true}
         className="h-full"
       >

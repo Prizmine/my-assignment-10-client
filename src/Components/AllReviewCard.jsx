@@ -33,11 +33,14 @@ const AllReviewCard = ({ review }) => {
 
   const fetchFavoriteReviews = () => {
     if (user?.email) {
-      fetch(`http://localhost:3000/my-favorite-reviews?email=${user.email}`, {
-        headers: {
-          authorization: `bearer ${user.accessToken}`,
-        },
-      })
+      fetch(
+        `https://my-assignment-10-server-sand.vercel.app/my-favorite-reviews?email=${user.email}`,
+        {
+          headers: {
+            authorization: `bearer ${user.accessToken}`,
+          },
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           setFavoriteReviews(data);
@@ -107,7 +110,7 @@ const AllReviewCard = ({ review }) => {
       return;
     }
 
-    fetch("http://localhost:3000/favorite-reviews", {
+    fetch("https://my-assignment-10-server-sand.vercel.app/favorite-reviews", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -140,12 +143,15 @@ const AllReviewCard = ({ review }) => {
     }
 
     if (reviewToRemove?._id) {
-      fetch(`http://localhost:3000/favorite-reviews/${reviewToRemove._id}`, {
-        method: "DELETE",
-        headers: {
-          authorization: `bearer ${user.accessToken}`,
-        },
-      })
+      fetch(
+        `https://my-assignment-10-server-sand.vercel.app/favorite-reviews/${reviewToRemove._id}`,
+        {
+          method: "DELETE",
+          headers: {
+            authorization: `bearer ${user.accessToken}`,
+          },
+        }
+      )
         .then((res) => {
           if (!res.ok) {
             return res.json().then((err) => {

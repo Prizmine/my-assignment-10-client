@@ -5,24 +5,6 @@ import backgroundImage from "/nice-wood-kitchen.jpg";
 import { ToastContainer } from "react-toastify";
 
 function App() {
-  // const element = document.querySelector(".appear");
-
-  // const observer = new IntersectionObserver(
-  //   (entries) => {
-  //     entries.forEach((entry) => {
-  //       if (entry.isIntersecting) {
-  //         element.classList.add("is-visible");
-
-  //         observer.unobserve(element);
-  //       }
-  //     });
-  //   },
-  //   {
-  //     threshold: 0.1,
-  //   }
-  // );
-
-  // observer.observe(element);
   return (
     <div
       style={{

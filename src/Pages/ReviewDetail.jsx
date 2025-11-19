@@ -5,7 +5,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 const ReviewDetail = () => {
   const { id } = useParams();
   const { user } = useContext(AuthContext);
-  // console.log(user);
+  
 
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -13,18 +13,20 @@ const ReviewDetail = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:3000/food-reviews/${id}`, {
-      headers: {
-        authorization: `bearer ${user.accessToken}`,
-      },
-    })
+    fetch(
+      `https://my-assignment-10-server-sand.vercel.app/food-reviews/${id}`,
+      {
+        headers: {
+          authorization: `bearer ${user.accessToken}`,
+        },
+      }
+    )
       .then((res) => {
         return res.json();
       })
       .then((d) => {
         setData(d);
         setLoading(false);
-        // console.log(d);
       })
       .catch((err) => {
         setError(err.message);
@@ -69,7 +71,7 @@ const ReviewDetail = () => {
             {data.reviewText}
           </p>
 
-          <div className="mt-10 p-6 bg-white/60 backdrop-blur-md rounded-2xl border border-white/40 shadow-lg transition-all hover:shadow-[0_10px_30px_rgba(0,0,0,0.15)] hover:scale-[1.02]">
+          <div className="mt-10 p-6  backdrop-blur-md rounded-2xl border border-white/40 shadow-lg transition-all hover:shadow-[0_10px_30px_rgba(0,0,0,0.15)] hover:scale-[1.02]">
             <h2 className="text-xl font-bold mb-2">👤 Reviewer Info</h2>
 
             <p className="text-gray-700">

@@ -29,17 +29,17 @@ const AddReview = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch("http://localhost:3000/food-reviews", {
+    fetch("https://my-assignment-10-server-sand.vercel.app/food-reviews", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        authorization: `bearer ${user.accessToken}`
+        authorization: `bearer ${user.accessToken}`,
       },
       body: JSON.stringify(formData),
     })
       .then((res) => res.json())
       .then(() => {
-        // console.log("Review added:", data);
+        
         toast.success("Review submitted successfully!");
         navigate("/");
       })
@@ -47,7 +47,7 @@ const AddReview = () => {
   };
 
   return (
-    <div className="w-full flex justify-center mt-10 px-4">
+    <div className="w-full flex justify-center mt-10 px-4 mb-10">
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-xl mx-auto bg-base-100/50 backdrop-blur-sm shadow-xl rounded-2xl p-8 space-y-8 border border-amber-200"

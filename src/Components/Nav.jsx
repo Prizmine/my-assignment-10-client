@@ -9,9 +9,6 @@ import logo from "/ChatGPT_Image_Nov_15__2025__08_19_28_PM-removebg-preview.png"
 const Nav = () => {
   const { user } = useContext(AuthContext);
 
-  // console.log(user?.photoURL);
-  // photoURL
-
   const [dropdown, setDropdown] = useState(false);
 
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
@@ -30,9 +27,7 @@ const Nav = () => {
       <NavLink to={"/"} className={"mx-2.5 text-xl font-semibold"}>
         Home
       </NavLink>
-      <NavLink to={"/About"} className={"mx-2.5 text-xl font-semibold"}>
-        About
-      </NavLink>
+
       <NavLink to={"/all-reviews"} className={"mx-2.5 text-xl font-semibold"}>
         All Reviews
       </NavLink>
@@ -130,9 +125,6 @@ const Nav = () => {
             <Link
               onClick={() => {
                 setDropdown(false);
-                setTimeout(() => {
-                  window.location.reload();
-                }, 150);
               }}
               to={"/add-review"}
               className="buttonPrimery"
@@ -142,9 +134,6 @@ const Nav = () => {
             <Link
               onClick={() => {
                 setDropdown(false);
-                setTimeout(() => {
-                  window.location.reload();
-                }, 150);
               }}
               to={"/my-reviews"}
               className="buttonPrimery"
@@ -154,9 +143,6 @@ const Nav = () => {
             <Link
               onClick={() => {
                 setDropdown(false);
-                setTimeout(() => {
-                  window.location.reload();
-                }, 150);
               }}
               to={"/liked-reviews"}
               className="buttonPrimery"

@@ -9,7 +9,7 @@ const AllReviews = () => {
 
   const fetchAllReviews = () => {
     setLoading(true);
-    fetch("http://localhost:3000/food-reviews")
+    fetch("https://my-assignment-10-server-sand.vercel.app/food-reviews")
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);
@@ -28,7 +28,9 @@ const AllReviews = () => {
     }
 
     setLoading(true);
-    fetch(`http://localhost:3000/search-reviews?search=${search}`)
+    fetch(
+      `https://my-assignment-10-server-sand.vercel.app/search-reviews?search=${search}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);

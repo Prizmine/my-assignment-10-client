@@ -10,7 +10,8 @@
   --color-secondary: #d72050;
   --color-base-100: #ecedb0;
   --color-base-200: #ecedb0;
-  --color-base-300: #e7e7e7;
+  --color-base-300: #edc98e;
+  --color-base-400: #fff;
   --color-accent: #706f6f;
 }
 
@@ -38,7 +39,7 @@ html {
 }
 
 .appear {
-  animation: appear ease-in-out;
+  animation: appearUp ease-in-out;
   animation-timeline: view();
   animation-range: entry 0% cover 40%;
 }
@@ -49,8 +50,25 @@ html {
   animation-range: entry 0% cover 20%;
 }
 
+@keyframes slideIn {
+  0% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .slide-1 {
-  animation: appear 0.8s ease-in-out;
+  animation: none;
+}
+
+@media (min-width: 768px) {
+  .slide-1 {
+    animation: slideIn 0.7s ease forwards;
+  }
 }
 
 .buttonPrimery {
@@ -95,6 +113,17 @@ html {
   }
 }
 
+@keyframes appearUp {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
 .active {
   position: relative;
   display: inline-block;
@@ -107,20 +136,36 @@ html {
   position: absolute;
   width: 100%;
   height: 6px;
-  background: linear-gradient(
-    90deg,
-    #ffa500,
-    #ff4c4c
-  ); 
-  border-radius: 3px; 
+  background: linear-gradient(90deg, #ffa500, #ff4c4c);
+  border-radius: 3px;
   bottom: 0;
   left: 0;
-  z-index: -1; 
+  z-index: -1;
   transition: transform 0.3s ease;
 }
 
 .active:hover::after {
-  transform: scaleX(1.07); 
+  transform: scaleX(1.07);
 }
 
+.hover\:rotate-x-3:hover {
+  transform: translateY(-5px) rotateX(3deg);
+}
 
+.hover\:rotate-y-1:hover {
+  transform: translateY(-5px) rotateY(1deg);
+}
+
+.hover\:rotate-y-\[-1deg\]:hover {
+  transform: translateY(-5px) rotateY(-1deg);
+}
+
+.shadow-3xl-orange {
+  box-shadow: 0 10px 30px rgba(249, 115, 22, 0.4),
+    0 0 0 1px rgba(249, 115, 22, 0.1);
+}
+
+.shadow-3xl-green {
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4),
+    0 0 0 1px rgba(16, 185, 129, 0.1);
+}

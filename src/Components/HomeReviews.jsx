@@ -1,14 +1,25 @@
 import React, { useEffect, useState } from "react";
 import HomeReviewCard from "./HomeReviewCard";
+import Loader from "./Loader/Loader";
+import { toast } from "react-toastify";
 
 const HomeReviews = () => {
   const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("http://localhost:3000/top-food-reviews")
+    fetch("https://my-assignment-10-server-sand.vercel.app/top-food-reviews")
       .then((res) => res.json())
-      .then((data) => setReviews(data));
+      .then((data) => {
+        setReviews(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        toast.error(error);
+        setLoading(false);
+      });
   }, []);
 
+  if (loading) return <Loader></Loader>;
   return (
     <div className="mx-auto w-10/12 xl:w-8/12 my-[300px]">
       <h2 className="text-6xl text-white font-bold text-center mb-[100px]">

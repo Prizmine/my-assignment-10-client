@@ -11,11 +11,14 @@ const LikedReview = () => {
 
   const fetchFavoriteReviews = () => {
     if (user?.email) {
-      fetch(`http://localhost:3000/my-favorite-reviews?email=${user.email}`, {
-        headers: {
-          authorization: `bearer ${user.accessToken}`,
-        },
-      })
+      fetch(
+        `https://my-assignment-10-server-sand.vercel.app/my-favorite-reviews?email=${user.email}`,
+        {
+          headers: {
+            authorization: `bearer ${user.accessToken}`,
+          },
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           setFavoriteReviews(data);
@@ -31,8 +34,6 @@ const LikedReview = () => {
   useEffect(() => {
     fetchFavoriteReviews();
   }, [user]);
-
-  console.log(favoriteReviews);
 
   if (loading) return <Loader></Loader>;
   return (

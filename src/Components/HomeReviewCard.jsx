@@ -46,7 +46,7 @@ const HomeReviewCard = ({ review }) => {
   }, []);
 
   return (
-    <div className="tilt-wrapper">
+    <div className="tilt-wrapper slide-1">
       <div
         ref={cardRef}
         className="card appear transform-3d will-change-transform bg-base-100/30 backdrop-blur-md shadow-lg rounded-xl border border-white/40 transition-all duration-200 ease-out"

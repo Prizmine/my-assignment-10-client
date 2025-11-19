@@ -13,8 +13,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
   const navigate = useNavigate();
-  // const location = useLocation();
-  // const from = location.state?.from?.pathname || "/";
+
 
   const { setUser } = useContext(AuthContext);
   const [error, setError] = useState("");
@@ -86,9 +85,11 @@ const Register = () => {
     <div className="hero min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold text-orange-600">Register Now</h1>
+          <h1 className="text-5xl font-bold text-orange-600 slide-1">
+            Register Now
+          </h1>
         </div>
-        <div className="card bg-white/30 backdrop-blur-md w-full max-w-sm shrink-0 shadow-2xl rounded-2xl">
+        <div className="card slide-1 bg-white/30 backdrop-blur-md w-full max-w-sm shrink-0 shadow-2xl rounded-2xl">
           <form onSubmit={handleFormSubmit} className="card-body">
             <fieldset className="fieldset">
               <h2 className="text-2xl font-bold text-center text-orange-600 mb-4">

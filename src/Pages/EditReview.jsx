@@ -12,11 +12,14 @@ const EditReview = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/food-reviews/${id}`, {
-      headers: {
-        authorization: `bearer ${user.accessToken}`,
-      },
-    })
+    fetch(
+      `https://my-assignment-10-server-sand.vercel.app/food-reviews/${id}`,
+      {
+        headers: {
+          authorization: `bearer ${user.accessToken}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         setOldData(data);
@@ -56,14 +59,17 @@ const EditReview = () => {
     e.preventDefault();
     setLoading(true);
 
-    fetch(`http://localhost:3000/food-reviews/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `bearer ${user.accessToken}`,
-      },
-      body: JSON.stringify(formData),
-    })
+    fetch(
+      `https://my-assignment-10-server-sand.vercel.app/food-reviews/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `bearer ${user.accessToken}`,
+        },
+        body: JSON.stringify(formData),
+      }
+    )
       .then((res) => res.json())
       .then(() => {
         toast.success("successfully updated review");
@@ -80,7 +86,7 @@ const EditReview = () => {
   }
 
   return (
-    <div className="w-full flex justify-center mt-10 px-4">
+    <div className="w-full flex justify-center my-10 px-4">
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-xl mx-auto bg-base-100/50 backdrop-blur-sm shadow-xl rounded-2xl p-8 space-y-8 border border-amber-200"

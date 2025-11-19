@@ -1,8 +1,8 @@
 import React from "react";
 import HeroSection from "../Components/HeroSection";
 import HomeReviews from "../Components/HomeReviews";
-import ThreeD from "../Components/ThreeD";
 import RecomendedFood from "../Components/RecomendedFood";
+import Section2 from "../Components/Section2";
 
 const Home = () => {
   return (
@@ -11,7 +11,7 @@ const Home = () => {
       <HomeReviews></HomeReviews>
 
       <RecomendedFood></RecomendedFood>
-      {/* <ThreeD></ThreeD> */}
+      <Section2></Section2>
     </div>
   );
 };
